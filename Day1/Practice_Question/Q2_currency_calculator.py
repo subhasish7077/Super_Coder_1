@@ -1,12 +1,12 @@
 def currencyConvertor(amountINR,country):
     if(country=="Euro"):
-        return amountINR*0.01417
+        return amountINR/0.01417
     elif(country=="British Pound"):
-        return amountINR*0.0100
+        return amountINR/0.0100
     elif(country=="Australian Dollar"):
-        return amountINR*0.02140
+        return amountINR/0.02140
     elif(country=="Canadian Dollar"):
-        return amountINR*0.02027
+        return amountINR/0.02027
     else:
         return -1
 
@@ -19,4 +19,3 @@ cur=int(input())
 amt=int(input())
 
 print(currencyConvertor(amt,cur_list[cur]))
-
