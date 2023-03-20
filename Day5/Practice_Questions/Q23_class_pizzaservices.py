@@ -19,7 +19,6 @@ class Pizzaservice:
         s.__cost=None
         s.__service_id=None
         s.__customer=customer
-        s.calculate_cost()
     def validate_type(s):
         if(s.__size.lower() in ["small","medium"]):
             return True
@@ -27,23 +26,21 @@ class Pizzaservice:
             return False
     def calculate_cost(s):
         if(s.__customer.validate_quantity() and s.validate_type()):
+            Pizzaservice.count+=1
+            s.__service_id=s.__size[0]+str(Pizzaservice.count)
             if(s.__size=="small"):
-                if(s.__additional_topping):
+                if(s.__additional_topping==True):
                     s.__cost=180*s.__customer.get_no()
                 else:
                     s.__cost=150*s.__customer.get_no()
-                s.generate_service_id()
             elif(s.__size=="medium"):
                 if(s.__additional_topping):
                     s.__cost=250*s.__customer.get_no()
                 else:
                     s.__cost=200*s.__customer.get_no()
-                s.generate_service_id()
         else:
             s.__cost=-1
-    def generate_service_id(s):
-        Pizzaservice.count+=1
-        s.__service_id=s.__size[0]+str(int(s.count))
+
     def set_topping(s,topping):
         s.__additional_topping=topping
     def get_topping(s):
@@ -94,3 +91,11 @@ p1.calculate_cost()
 d1=Doordelivery(10,p1)
 d1.calculate_cost()
 d1.display()
+
+
+c2=Customer(2)
+p2=Pizzaservice("small",c2,False)
+p2.calculate_cost()
+d2=Doordelivery(5,p2)
+d2.calculate_cost()
+d2.display()
