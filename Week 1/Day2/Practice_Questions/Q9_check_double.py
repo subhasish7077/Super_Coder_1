@@ -6,6 +6,8 @@ def check_double(n):
         l1=list(n)
         x.sort()
         l1.sort() 
+        print(x)
+        print(l1)
         if(x==l1):
             print(True)
         else:
