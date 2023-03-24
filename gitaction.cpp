@@ -9,10 +9,10 @@ int main()
     cin>>s;
 
     s = "git commit -m \"" + s +"\"";
+    
     cout << s << endl;
     system("git add .");
     system(s.c_str());
-    system("git push");
-
+    system("git push origin main");
     return 0;
 }
