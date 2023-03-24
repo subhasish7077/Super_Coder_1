@@ -16,6 +16,7 @@
 # + get_customer_name()
 # + get_age()
 # + get_account()
+
 # Account
 # - account_type
 # - balance
@@ -25,6 +26,7 @@
 # + get_balance()
 # + get_min_balance()
 # + set_balance(balance)
+
 # PrivilegedCustomer
 # - bonus_points
 # __init__ (customer_id, customer_name, age, account, 
@@ -69,48 +71,6 @@ class OverdrawException(Exception):
 class LimitReachedException(Exception):
     pass
 
-class Customer:
-    __customer_id=None
-    __customer_name=None
-    __age=None
-    __account=None
-    __balance=None
-    def __init__(s,id,name,age,account) -> None:
-        s.__customer_id=id
-        s.__customer_name=name
-        s.__age=age
-        s.__account=account
-        s.__balance=account.get_balance()
-    def withdraw(s,amount):
-        if s.__balance<amount:
-            raise OverdrawException
-        else:
-            s.__balance=s.__balance-amount
-            s.__account.set_balance(s.__balance)
-            print("\n-----------------------")
-            print("Withdrawn sucessfully")
-            print("------------------------\n")
-            if(s.__balance<s.__account.get_min_balance()):
-                raise LimitReachedException
-    def take_card(s):
-        print("Take card out from the ATM")
-    def get_customer_id(s):
-        return s.__customer_id
-    def get_customer_name(s):
-        return s.__customer_name
-    def get_age(s):
-        return s.__age
-    def get_account(s):
-        return s.__account
-    def display(s):
-        print()
-        print("Customer Id:",s.__customer_id)
-        print("Customer Name:",s.__customer_name)
-        print("Age:",s.__age)
-        print("Account Type:",s.__account.get_account_type())
-        print("Account Balance:",s.__balance)
-        print("Account minimum:",s.__account.get_min_balance())
-
 class Account:
     __account_type=None
     __balance=None
@@ -128,6 +88,50 @@ class Account:
     def set_balance(s,balance):
         s.__balance=balance
 
+class Customer:
+    __customer_id=None
+    __customer_name=None
+    __age=None
+    __account=None
+    __balance=None
+    def __init__(s,id,name,age,account) -> None:
+        s.__customer_id=id
+        s.__customer_name=name
+        s.__age=age
+        s.__account=account
+        s.__balance=account.get_balance()
+    def take_card(s):
+        print("Take card out from the ATM")
+    def withdraw(s,amount):
+        if s.__balance<amount:
+            raise OverdrawException
+        else:
+            s.__balance=s.__balance-amount
+            s.__account.set_balance(s.__balance)
+            print("\n-----------------------")
+            print("Withdrawn sucessfully")
+            print("------------------------\n")
+            s.take_card()
+            if(s.__balance<s.__account.get_min_balance()):
+                raise LimitReachedException
+    def get_customer_id(s):
+        return s.__customer_id
+    def get_customer_name(s):
+        return s.__customer_name
+    def get_age(s):
+        return s.__age
+    def get_account(s):
+        return s.__account
+    def display(s):
+        print()
+        print("Customer Id:",s.__customer_id)
+        print("Customer Name:",s.__customer_name)
+        print("Age:",s.__age)
+        print("Account Type:",s.__account.get_account_type())
+        print("Account Balance:",s.__balance)
+        print("Account minimum:",s.__account.get_min_balance())
+
+
 class PrivilegedCustomer(Customer):
     __bonous_point=None
     def __init__(s,id,name,age,account,point) -> None:
@@ -141,25 +145,29 @@ class PrivilegedCustomer(Customer):
             s.__bonous_point+=10
         else:
             s.__bonous_point+=2
+
     def withdraw(s, amount):
         try:
             super().withdraw(amount)
             s.increase_bonus()
         except OverdrawException:
-            print("Not enoufgh balance")
+            print("Not enough balance")
         except LimitReachedException:
             print("Balance is less than minimum balance")
     def display(s):
         print()
-        print("Customer Id:",super().get_customer_id())
-        print("Customer Name:",super().get_customer_name())
-        print("Age:",super().get_age())
+        # print("Customer Id:",super().get_customer_id())
+        # print("Customer Name:",super().get_customer_name())
+        # print("Age:",super().get_age())
+        # print("Bonous Point:",s.__bonous_point)
+        # print("Account Type:",super().get_account().get_account_type())
+        # print("Account Balance:",super().get_account().get_balance())
+        # print("Account minimum:",super().get_account().get_min_balance())
+        super().display()
         print("Bonous Point:",s.__bonous_point)
-        print("Account Type:",super().get_account().get_account_type())
-        print("Account Balance:",super().get_account().get_balance())
-        print("Account minimum:",super().get_account().get_min_balance())
 
-a1=Account("Svings",1000,500)
+
+a1=Account("Savings",1000,500)
 pc1=PrivilegedCustomer(100,"Gopal",43,a1,100)
 pc1.display()
 pc1.withdraw(100)

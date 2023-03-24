@@ -6,7 +6,7 @@ int main()
 {
     string s = "";
     cout<< "Enter the message:- ";
-    getline (cin, s);
+    cin>>s;
 
     s = "git commit -m \"" + s +"\"";
     cout << s << endl;
