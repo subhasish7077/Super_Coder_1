@@ -55,7 +55,15 @@ class linkedlist:
             print(x.data,end=" ---> ")
             x=x.next
         print()
-
+    def no_of_node(s):
+        if(s.head == None):
+            return 0
+        n=s.head
+        c=0
+        while(n):
+            n=n.next
+            c+=1
+        return c
 l=[int(i) for i in input().split()]
 ll=linkedlist()
 for i in l:
@@ -64,3 +72,6 @@ ll.display()
 print()
 ll.remove_by_loc(3)
 ll.display()
+ll.remove_frm_beginning
+ll.display()
+print("Number of nodes: ",ll.no_of_node())
