@@ -64,14 +64,24 @@ class linkedlist:
             n=n.next
             c+=1
         return c
+    def search(s,data):
+        n=s.head
+        c=0
+        while(n):
+            if(n.data==data):
+                break
+            n=n.next
+            c+=1
+        print(data," found at ",c+1,"th node.")
 l=[int(i) for i in input().split()]
 ll=linkedlist()
 for i in l:
-    ll.add_at_beginning(i)
+    ll.add_at_end(i)
 ll.display()
 print()
 ll.remove_by_loc(3)
 ll.display()
-ll.remove_frm_beginning
+ll.remove_frm_beginning()
 ll.display()
 print("Number of nodes: ",ll.no_of_node())
+ll.search(5)
