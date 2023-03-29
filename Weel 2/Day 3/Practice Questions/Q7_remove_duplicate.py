@@ -1,8 +1,3 @@
-'''
-
-Reverse the given linked list
-
-'''
 class Node:
     def __init__(s,data=None):
         s.data=data
@@ -60,21 +55,21 @@ class linkedlist:
             print(x.data,end=" ---> ")
             x=x.next
         print()
-def reverse(l):
-    prev=None
-    n=None
-    current=l.head
-    while(current):
-        n=current.next
-        current.next=prev
-        prev=current
-        current=n
-    l.head=prev
 
-ll=linkedlist()
+def remove_duplicate(l):
+        temp = l.head
+        while temp:
+            while temp.next and temp.next.data == temp.data:
+                temp.next = temp.next.next     
+            temp = temp.next
+
+
 l=[int(i) for i in input().split()]
+ll=linkedlist()
 for i in l:
     ll.add_at_end(i)
 ll.display()
-reverse(ll)
+remove_duplicate(ll)
+print("After removal of Duplicates")
 ll.display()
+

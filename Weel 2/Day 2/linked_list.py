@@ -55,6 +55,7 @@ class linkedlist:
             print(x.data,end=" ---> ")
             x=x.next
         print()
+# Additional Function
     def no_of_node(s):
         if(s.head == None):
             return 0
@@ -73,6 +74,7 @@ class linkedlist:
             n=n.next
             c+=1
         print(data," found at ",c+1,"th node.")
+
 l=[int(i) for i in input().split()]
 ll=linkedlist()
 for i in l:
