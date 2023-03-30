@@ -31,16 +31,18 @@ class stack:
             s.__top+=1
             s.__element.insert(s.__top,val)
             print("sucessfully Inserted {} into the stack.".format(val))
+
     def top(s):
         return s.__element[s.__top]
     def pop(s):
         if(s.isempty()):
             print("Cannot pop as the Stack is empty.")
         else:
-            s.__top-=1
             x=s.top()
+            s.__top-=1
             s.__element.pop()
             print("sucessfully poped {} from the stack.".format(x))
+            return x
     def get_max_size(s):
         return s.__max_size
     def display(s):
