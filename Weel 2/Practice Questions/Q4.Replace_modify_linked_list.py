@@ -27,10 +27,6 @@ class linkedlist:
     def __init__(s) -> None:
         s.head=None
 #Add nodes
-    def add_at_beginning(s,data):
-        n_node=Node(data)
-        n_node.next=s.head
-        s.head=n_node
     def add_at_end(s,data):
         n_node=Node(data)
         if(s.head==None):
@@ -40,46 +36,6 @@ class linkedlist:
             while(temp.next != None):
                 temp=temp.next
             temp.next=n_node
-    def add_after(s,data,prev):
-        n=s.head
-        while(n.next is not None):
-            if(n.data==prev):
-                break
-            n=n.next
-        if(n.next==None):
-            print(prev," is not found in list")
-        else:
-            n_node=Node(data)
-            n_node.next=n.next
-            n.next=n_node
-#Remove node
-    def remove_frm_beginning(s):
-        if(s.head is None):
-            print("List is empty")
-        else:
-            s.head=s.head.next
-    def remove_frm_end(s):
-        if(s.head is None):
-            print("List is empty")
-        else:
-            n=s.head
-            while(n.next.next is not None):
-                n=n.next
-            n.next=None
-    def remove_by_val(s,val):
-        if(s.head is None):
-            print("List is empty")
-        elif(s.head.data==val):
-            s.remove_frm_beginning()
-        else:
-            n=s.head
-            while(n.next is not None):
-                if(n.next.data==val):
-                    break
-            if(n.next is None):
-                print("value not found")
-            else:
-                n.next=n.next.next
 
     def display(s):
         x=s.head

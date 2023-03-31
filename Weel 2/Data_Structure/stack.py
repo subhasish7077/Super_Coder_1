@@ -40,7 +40,6 @@ class stack:
         else:
             x=s.top()
             s.__top-=1
-            s.__element.pop()
             print("sucessfully poped {} from the stack.".format(x))
             return x
     def get_max_size(s):

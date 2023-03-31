@@ -20,10 +20,6 @@ class linkedlist:
     def __init__(s) -> None:
         s.head=None
 # Add nodes
-    def add_at_beginning(s,data): 
-        n_node=Node(data)
-        n_node.next=s.head
-        s.head=n_node
     def add_at_end(s,data):
         n_node=Node(data)
         if(s.head==None):
@@ -41,11 +37,6 @@ class linkedlist:
         n_node.next=temp.next
         temp.next=n_node 
 # Remove node
-    def remove_frm_beginning(s):
-        if(s.head is None):
-            print("List is empty")
-        else:
-            s.head=s.head.next
     def remove_frm_end(s):
         if(s.head is None):
             print("List is empty")
@@ -54,14 +45,6 @@ class linkedlist:
             while(n.next.next is not None):
                 n=n.next
             n.next=None
-    def remove_by_loc(s,loc):
-        if(s.head==None):
-            print("List is empty")
-        else:
-            temp=s.head
-            for i in range(loc-2):
-                temp=temp.next
-            temp.next=temp.next.next
 
     def display(s):
         x=s.head

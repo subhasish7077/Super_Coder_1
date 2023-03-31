@@ -12,7 +12,5 @@ def check_double(n):
             print(True)
         else:
             print(False)
-        
-    
 n=input()
 check_double(n)

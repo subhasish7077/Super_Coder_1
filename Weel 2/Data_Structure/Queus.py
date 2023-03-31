@@ -9,7 +9,6 @@ Operations on stack:
 5) dqueue(): Removes the element in front
 
 '''
-
 class queus:
     def __init__(s,max_size) -> None:
         s.__max_size=max_size
