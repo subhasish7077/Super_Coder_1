@@ -62,6 +62,6 @@ l=[i for i in input().split(',')]
 ll=linkedlist()
 for i in l:
     ll.add_at_end(i)
-ll.display()
+# ll.display()
 replace(ll)
 ll.display()
