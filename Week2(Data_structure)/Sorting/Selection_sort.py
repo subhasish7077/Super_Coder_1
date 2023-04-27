@@ -7,6 +7,7 @@ def selection_sort(l):
             if(l[min_index]>l[j]):
                 min_index=j
         l[i],l[min_index]=l[min_index],l[i]
+        print(l)
 
 l=[5,7,3,2,10,8]
 selection_sort(l)
